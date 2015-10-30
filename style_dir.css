@@ -1,0 +1,45 @@
+body {
+	background: #263238;
+	font-family: "Open Sans", "Myriad Pro", "Helvetica", "Arial";
+	color: #ECF0F1;
+	margin: 0px 0px 0px 0px;
+}
+.button {
+	background-color: #27AE60;
+	border: 5px solid #27AE60;
+	margin-left: -5px;
+	color: #ECF0F1;
+	font-weight: 600;
+	height: 33px;
+}
+img {
+	margin-top: 5px;
+	max-width: 100%;
+	border-bottom: 2px solid #27AE60;
+}
+.header {
+	background-color: #34495e;
+	height: 80px;
+}
+.header:hover {
+	background-color: #37474F;
+}
+.upload_form, #fileToUpload {
+	height:80px;
+	width:100%;
+	opacity: 0;
+	position: absolute;
+}
+.error {
+	background-color: #c62828;
+	margin:0;
+}
+.success {
+	background-color: #388E3C;
+	margin:0;
+}
+.intro {
+	position: absolute;
+	text-align: center;
+	margin-left: 43%;
+}
