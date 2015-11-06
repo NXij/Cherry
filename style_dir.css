@@ -1,5 +1,5 @@
 body {
-	background: #263238;
+	background: #212121;
 	font-family: "Open Sans", "Myriad Pro", "Helvetica", "Arial";
 	color: #ECF0F1;
 	margin: 0px 0px 0px 0px;
@@ -13,14 +13,33 @@ body {
 	height: 33px;
 }
 img {
-	margin-top: 5px;
+	margin-top: 0px;
 	max-width: 100%;
 	border-bottom: 2px solid #27AE60;
 }
 .header {
-	background-color: #34495e;
+	background-color: #c0392b;
 	height: 80px;
+	animation: anime 10s;
+	opacity: 75%;
+	-moz-animation: anime 10s cubic-bezier(.45,.05,.55,.95) infinite;
+	-webkit-animation:anime 10s cubic-bezier(.45,.05,.55,.95) infinite;
 }
+@-moz-keyframes anime {
+	0%	{background-color: #c0392b;}
+	25% {background-color: #f39c12;}
+	50% {background-color: #27ae60;}
+	75% {background-color: #2980b9;}
+	100% {background-color: #c0392b;}
+}
+@-webkit-keyframes anime {
+	0%	{background-color: #c0392b;}
+	25% {background-color: #f39c12;}
+	50% {background-color: #27ae60;}
+	75% {background-color: #2980b9;}
+	100% {background-color: #c0392b;}
+}
+
 .header:hover {
 	background-color: #37474F;
 }
@@ -41,5 +60,28 @@ img {
 .intro {
 	position: absolute;
 	text-align: center;
-	margin-left: 43%;
+	margin-left: 46%;
+}
+.trash {
+	background-color: rgba(0, 0, 0, 0.3);
+	padding: 0px 0px 5px 0px;
+	display: inline-block;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	max-width: 100%;
+}
+.trash p {
+	margin: 0px;
+	font-size: 13px;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	word-wrap: break-word;
+	padding: 0px 7px 0px 7px;
+}
+.ddiv {
+	  margin: 0px;
+}
+.dank {
+	margin-top: 5px;
 }

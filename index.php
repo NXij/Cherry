@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- web gallery with upload, infinite scrolling and lazyload Author: Tanel J -->
+<!-- web gallery with upload, infinite scrolling and lazyload(by Apelsiini) Author: Tanel J -->
 <!-- Do What the Fuck You Want to Public License. -->
 <html>
 	<head>
@@ -8,7 +8,7 @@
 		</head>
 		<body>
 				<header class="header">
-					<h1 class="intro">Drop image here</h1>
+					<h1 class="intro">Add image...</h1>
 				<form class="upload_form" action="<?php echo $_SERVER['PHP_SELF'];?>" method="POST" enctype="multipart/form-data">
     					<input type="file" onchange="this.form.submit()" name="fileToUpload" id="fileToUpload">
     					<input type="hidden" name="fileToUpload" value=""/>
@@ -36,7 +36,7 @@
     				}	
 				}	
 				if ($_FILES["fileToUpload"]["size"] > 1000000) {
-    				echo '<p class="error">Im too jewish for such high image size (1MB).</p>'.PHP_EOL;
+    				echo '<p class="error">Filesize too high. (max. 1MB)</p>'.PHP_EOL;
     				$uploadOk = 0;
 				}
 				// Check if file already exists
@@ -71,20 +71,32 @@
     				return ($files) ? $files : false;
 					}
 
+				function filesize_formatted($path)
+				{
+				    $size = filesize($path);
+				    $units = array( 'B', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB');
+				    $power = $size > 0 ? floor(log($size, 1024)) : 0;
+				    return number_format($size / pow(1024, $power), 2, '.', ',') . ' ' . $units[$power];
+				}
+
 		
 				$files = tits($dir);
 				$count = count($files);
 				foreach ( $files as $file => $count ) {
-					echo '<div class="trash"><img class="lazy" data-original="./images/'. $files[$file] .'"><br><noscript><img src="./images/'. $files[$file] .'"></noscript></div>'.PHP_EOL;
+					$filedate = date("H:i | d.m.Y", filemtime("./images/$files[$file]"));
+					$filedimension = getimagesize("./images/$files[$file]");
+					echo '<div class="trash"><img class="lazy" data-original="./images/'. $files[$file] .'"><p title="'. $files[$file] .' @ '. $filedimension[0] .'x'. $filedimension[1] .' | '. filesize_formatted("./images/$files[$file]") .'">'. $filedate .'</p></div><p class="ddiv"></p>'.PHP_EOL;
 				}
 			?>
 		</div>
 			</center>
+			<script src="smoothscroll.min.js"></script>
 		<script src="jquery-2.1.4.min.js"></script>
 		<script src="jquery.lazyload.min.js"></script>
 		<script>
 			$("img.lazy").lazyload();
 			</script>
 		<script type="text/javascript" src="infi.js"></script>
+		<script type="text/javascript" src="next.js"></script>
 		</body>
 </html>
